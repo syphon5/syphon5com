@@ -1,0 +1,15 @@
+<!doctype html>
+<html class="no-js" lang="{{ .Site.LanguageCode }}" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    {{ partial "meta.html" . }}
+    {{ partial "meta_opengraph.html" . }}
+    {{ partial "meta_twittercard.html" . }}
+    <base href="{{ .Site.BaseURL }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{ with .OutputFormats.Get "rss" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+    {{ partial "head_includes.html" . }}
+</head>
