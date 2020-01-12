@@ -9,3 +9,23 @@ theme = "hugo-frais"
     pseudo = "syphon5"
     twitter = "stevonio"
     linkedin = "steven.wroblewski"
+    headline = "Syphon5"
+    description = "This is the sites description, which will be found in the meta tags."
+    mainSections = ["blog", "post"]
+
+[taxonomies]
+    category = "categories"
+    tag = "tags"
+
+[[menu.main]]
+    name = "Posts"
+    pre = ""
+    url = "/post/"
+    identifier = "post"
+    weight = 1
+[[menu.main]]
+    name = "About"
+    pre = ""
+    url = "/about/"
+    identifier = "about"
+    weight = 2
