@@ -2,3 +2,10 @@ baseURL = "https://laughing-bose-f8772d.netlify.com/"
 languageCode = "en-us"
 title = "Syphon5 Title"
 theme = "hugo-frais"
+
+[params]
+	indexHeadline = "Data Shenanigans"
+    author = "Steven Wroblewski"
+    pseudo = "syphon5"
+    twitter = "stevonio"
+    linkedin = "steven.wroblewski"
