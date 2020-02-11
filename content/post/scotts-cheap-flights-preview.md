@@ -71,7 +71,7 @@ Below are some of the unique items I identified and had to tackle during the dat
 ##### Wrangle the Data
 I wrangled this data using [tidyverse](#) , [qdapRegex](#) , [zoo](#) , [gmailr](#) , [anytime](#) , and [stringi](#). Each serve the own purpose with [tidyverse](#) being the workhorse. 
 
-We are working with semi-stuctured HTML. SCF prides themselves on human curation and adding context to their deals, which I appreciate as a deal seeker. As an analyst relying on data sourced from their email code, this human input adds complexity. 
+We are working with semi-structured HTML. SCF prides themselves on human curation and adding context to their deals, which I appreciate as a deal seeker. As an analyst relying on data sourced from their email code, this human input adds complexity. 
 
 **Insert screenshot showing this here**
 
