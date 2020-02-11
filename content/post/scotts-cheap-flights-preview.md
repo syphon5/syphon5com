@@ -7,7 +7,7 @@ categories: ["analysis"]
 ---
 
 #### Analyzing the Cheap Flight Kings.
-**Is it worth paying for an international flight deal finder? Let's analyze and find out** Services like [Scott's Cheap Flights](https:www.scottscheapflights.com) (SCF) send international flight deals and price mistakes to your email inbox. Here's how it works: You sign up, select your ideal regions or airports, and Scott's team will email you when something pops. 
+**Is it worth paying for an international flight deal finder? Let's analyze and find out.** Services like [Scott's Cheap Flights](https:www.scottscheapflights.com) (SCF) send international flight deals and price mistakes to your email inbox. Here's how it works: You sign up, select your ideal regions or airports, and Scott's team will email you when something pops. 
 
 ![Scott's Cheap Flights Banner](/img/scf_banner.png)
 
@@ -28,7 +28,7 @@ What trends and fun facts can we identify from the Scott's Cheap Flights email d
 * Analysis: Build reporting mechanisms and visualize for storytelling
 
 ##### Project Limitations and Caveats
-Data source of truth is SCF deal emails: I have opted-in for receivng emails for every region since I subscribed. I do not delete emails. I mark them as read and move on. This means that I should have every email SCF has every sent. There is a chance that some got caught in spam or were accidentally deleted. I'd be able to validate my counts in an ideal scenario.
+Data source of truth is SCF deal emails: I have opted-in for receiving emails for every region since I subscribed. I do not delete emails. I mark them as read and move on. This means that I should have every email SCF has every sent. There is a chance that some got caught in spam or were accidentally deleted. I'd be able to validate my counts in an ideal scenario.
 
 Capturing all intended data correctly: I'll be running data quality checks on samples of the deal data. We are working with semi-structured HTML data from email templates that the SCF team uses. The goal will be to extract, wrangle, and accurately capture all values to the best of my ability, but there is always a chance something isn't captured correctly.
 
@@ -37,7 +37,7 @@ First, we need to get the SCF deal data. I have all of the emails since I subscr
 
 Second, we need to identify what data we may find important as a part of our analysis. After reviewing a sample of deal emails, I've outlined this initial list of data points: email id, email date, destination location (airport code), departure location (airport code), regular flight price, deal flight price, airlines available, months available, flag for deal email or general email, and a flag for whether it is a new premium only template.
 
-Third, is there anything else outside of this data set that could enhance our context or analysis? I'm going to use an available CSV data set that matches airport codes with municipalities in order to have consistent and clear names when anaylzing locations. I could have extracted the location names from the emails but this adds risk of typos and different names used for the same places. Airport codes should be more reliable and merging this data set will be simple.
+Third, is there anything else outside of this data set that could enhance our context or analysis? I'm going to use an available CSV data set that matches airport codes with municipalities in order to have consistent and clear names when analyzing locations. I could have extracted the location names from the emails but this adds risk of typos and different names used for the same places. Airport codes should be more reliable and merging this data set will be simple.
 
 ##### Get the Data
 First, we need to identify what email addresses the SCF deals come from. I can go into the Gmail interface and do some digging around. After a quick sample look over the last few years, it appears all emails came from one of two different addresses. 
@@ -53,7 +53,7 @@ I explored the data two ways: visually in the Gmail interface and in the actual 
 
 First I took a random subset of weeks since 2016 to visually review the emails, understand their general format, and ask questions: did the format appear to change at any point, are there different types of emails, what do more general account emails look like, etc.
 
-Then I took a random sample of email IDs and filtered in the data set in R. Here I could look at the raw data from the email contents and make notes on consistencies and inconsistencies. 
+Then I took a random sample of email IDs and filtered the data set in R. Here I could look at the raw data from the email contents and make notes on trends and inconsistencies. 
 
 **Insert code showing this here**
 
