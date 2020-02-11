@@ -8,10 +8,11 @@ theme = "hugo-frais"
     author = "Steven Wroblewski"
     pseudo = "syphon5"
     twitter = "stevonio"
-    linkedin = "steven.wroblewski"
+    linkedin = "steven-wroblewski"
     headline = "Syphon5"
     description = "This is the sites description, which will be found in the meta tags."
     mainSections = ["blog", "post"]
+    logo = "/img/meow.png"
 
 [taxonomies]
     category = "categories"
