@@ -1,6 +1,6 @@
-baseURL = "https://laughing-bose-f8772d.netlify.com/"
+baseURL = "https://syphon5.com"
 languageCode = "en-us"
-title = "Syphon5 Title"
+title = "Data Shenanigans with Steven Wroblewski | Syphon5"
 theme = "hugo-frais"
 
 [params]
@@ -10,7 +10,7 @@ theme = "hugo-frais"
     twitter = "stevonio"
     linkedin = "steven-wroblewski"
     headline = "Syphon5"
-    description = "This is the sites description, which will be found in the meta tags."
+    description = "Data analysis projects by Steven Wroblewski. Go on and read about my random analysis and other fine goods."
     mainSections = ["blog", "post"]
     logo = "/img/meow.png"
 
