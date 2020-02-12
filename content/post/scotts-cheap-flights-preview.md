@@ -15,7 +15,19 @@ I signed up for the service in late 2016 after finding them on Reddit. As an odd
 
 This analysis is a good example of working with a semi-structured data set, where the data source is out of my control, for an analysis project. SCF uses a simple template for their emails, and for the most part, they keep consistent with the information provided and where it goes in the email. It becomes easy to tell where the human input takes place as that is where the data gets less clean.
 
-**Insert example of email code**
+````
+[1] "\U0001f41a Trinidad — $200s/$300s (RT) Jan - Jun / Sep
+- Dec Trinidad and Tobago. Your \nnew best friends. If you 
+want to hop over to Tobago, flights are just $59 \n
+roundtrip. \n\n\n \n<https://scottscheapflights.com/?utm_
+source=scotts-cheap-flights&utm_medium=email&utm_campaign=
+deal&utm_term=campaign_982875&utm_content=img-scf-logo>\n\n
+Trinidad and Tobago. Your new best friends.\n\nIf you want 
+to hop over to Tobago \n<http://www.google.com/flights#flt=
+POS.TAB.2020-09-11*TAB.POS.2020-09-13;c:USD;e:1;sd:1;t:f>\n,
+flights are just $59 roundtrip.\n\n\n All prices are for 
+roundtrip flights and in USD unless otherwise stated.
+````
 
 
 ##### The Question
@@ -55,7 +67,10 @@ First I took a random subset of weeks since 2016 to visually review the emails, 
 
 Then I took a random sample of email IDs and filtered the data set in R. Here I could look at the raw data from the email contents and make notes on trends and inconsistencies. 
 
-**Insert code showing this here**
+````
+sample_email_df <- full_email_df %>% 
+	sample_n(1000)
+````
 
 Below are some of the unique items I identified and had to tackle during the data wrangling after my exploration:
 
@@ -67,25 +82,37 @@ Below are some of the unique items I identified and had to tackle during the dat
   * It looks like either SCF changed email providers at least once during my data capture period or Gmail started providing email structure slightly differently.
   * SCF started sending a new "Premium Only" email format in September of 2019, which is a different email structure. 
 
+Below are some fringe cases which will minimally affect the output. This dirty data is left unchecked and will be addressed in the future:
+
+  * Trips where there are multiple legs offered in the deal (estimated number of emails: less than 10)
+  * Trips where the order and inclusion of TO and FROM locations, including prices, is in a very odd format (estimated number of emails: less than 15)
 
 ##### Wrangle the Data
 I wrangled this data using [tidyverse](#) , [qdapRegex](#) , [zoo](#) , [gmailr](#) , [anytime](#) , and [stringi](#). Each serve the own purpose with [tidyverse](#) being the workhorse. 
 
 We are working with semi-structured HTML. SCF prides themselves on human curation and adding context to their deals, which I appreciate as a deal seeker. As an analyst relying on data sourced from their email code, this human input adds complexity. 
 
-**Insert screenshot showing this here**
+````
+\n\n\n\n\n TO: \n\n Lima (LIM) \n\n\n\n FROM: \n\n 
+Baltimore (BWI) - $355 \n\n Washington DC (DCA) - 
+$355 \n\n Washington DC (IAD) - $355 \n\n\n\nWHEN:  
+Varies by origin. Generally February through early 
+May and late August \nthrough early December 2020, 
+including Thanksgiving. Play around with the trip \n
+length to find all possible departure dates \nNORMAL 
+PRICE:  $800+ roundtrip \nAIRLINE(S): \n Delta (SkyTeam) 
+\n\nADD-ON FEES: \nNo bag fees, etc. \n\nBUY BY: 
+````
 
 The email IDs import as a list. From there I iterated over the list to query the Gmail API and retrieve the email message content, date, and unique email ID. Each email contents was stored back in the list.
 
 Each email was evaluated through a series of data checks _(if else, regular expressions)_ to identify if any special accommodations had to be made for extracting the necessary data outlined in my _data needs_ section. 
 
-**Insert example showing this**
-
 Now that this structure was outlined, I could use a combination of functions, loops, if statements, and regular expressions to parse through and extract out the necessary data. This part required trial-and-error as I tested the right regular expressions to get the job done. 
 
 The result was a data frame, with one email per row, that has each of the _data needs_ as it's own column. The [tidyverse](#) was used to join over the external airline name data based on the airport code. 
 
-**Insert example showing this**
+![Scott's Cheap Flights Data Frame Example](/img/post_img/scf_dataframe.png)
 
 ##### Analysis
 
